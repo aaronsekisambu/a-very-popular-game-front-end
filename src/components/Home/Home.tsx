@@ -134,6 +134,8 @@ class Home extends React.Component<any> {
 											</button>
 										);
 									})
+								) : error ? (
+									error
 								) : (
 									<p className="m-auto">Loading .....</p>
 								)}
