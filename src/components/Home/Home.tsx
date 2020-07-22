@@ -1,30 +1,10 @@
 import React, { Fragment } from 'react';
 import axios from 'axios';
-import { error } from 'console';
 class Home extends React.Component<any> {
-	// gridRows = 6;
-	// gridCols = 6;
 	grid: any[] = [];
 	colors: any = {};
-	// rows: number[] = [];
-	// cols: number[] = [];
-	// colorsArray: string[] = [];
-	// maxNumColors = 0;
 	result: any[] = [];
-	// winner: Boolean = false;
 	state: any = { count: 0 };
-
-	// constructor(props: any) {
-	// 	super(props);
-	// 	this.rows = this.getArray(this.gridRows);
-	// 	this.cols = this.getArray(this.gridCols);
-
-	// 	this.maxNumColors = this.rows.length / 2;
-	// 	// creating (this.rows.length/2) random colors
-	// 	this.getArray(this.maxNumColors).forEach((i) => {
-	// 		this.colorsArray[i] = this.setRandomColor();
-	// 	});
-	// }
 
 	componentDidMount = async () => {
 		try {
@@ -56,7 +36,6 @@ class Home extends React.Component<any> {
 
 		const tileHasOrigin = origin.length === 2 && this.colors[origin.join('')] === this.colors[`${b_row}${b_col}`];
 		if (!tileHasOrigin) {
-			// alert('----Has no origin---');
 			this.setState({ error: 'The selected tile has no origin, please select another tile with an origin' });
 			return;
 		}
@@ -109,25 +88,13 @@ class Home extends React.Component<any> {
 														{data.cols.map((j: any, idx1: number) => {
 															this.grid[idx][idx1] = j;
 															this.result = this.colors;
-															// console.log(i);
 															if (this.colors[`${i}${j}`] === undefined) {
 																this.colors[`${i}${j}`] = Math.floor(
-																	// Math.random() * this.maxNumColors
 																	Math.random() * data.colors.length
 																);
-																// return (e: any) => this.winner(e, i);
 															}
 
-															// this.winner = Object.values(this.colors).every(
-															// 	(num) => num === i - 1
-															// );
-															// console.log('winnn', this.winner)
-
-															// console.log(idx);
-															// console.log('color', this.colorsArray[0]);
-															// const background = this.colorsArray[this.colors[`${i}${j}`]];
 															const background = data.colors[this.colors[`${i}${j}`]];
-															// console.log(background)
 
 															return (
 																<td
@@ -173,9 +140,9 @@ class Home extends React.Component<any> {
 							</div>
 						</div>
 						<div className="text-secondary text-left mx-4 d-flex flex-column">
-							<small>
+							{/* <small>
 								AI Moves: <strong>2</strong>
-							</small>
+							</small> */}
 							<small>
 								Player Moves: <strong>{count}</strong>
 							</small>
